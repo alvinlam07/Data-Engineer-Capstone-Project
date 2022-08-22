@@ -1,0 +1,11 @@
+8/21/2022
+- Working on Req-1.1
+    - loaded in all 3 json files using .read.json()
+    - modify the dataframes
+        - casting types on column using .cast()
+        - had lots of difficulty formatting string but after some research, I found using format_string() to format string in specific ways and substring() to extract certain parts of a string to help
+        - replacing NaN value in column using .fill()
+        - had slight difficulty adding leading zeros in day and month string but after some research, I found using lpad() to add leading "0" to a string to help
+        - concatenated columns using concat()
+        - reorganizing columns using .select()
+    
