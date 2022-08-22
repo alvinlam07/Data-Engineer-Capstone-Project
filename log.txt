@@ -8,4 +8,9 @@
         - had slight difficulty adding leading zeros in day and month string but after some research, I found using lpad() to add leading "0" to a string to help
         - concatenated columns using concat()
         - reorganizing columns using .select()
-    
+
+8/22/2022
+- Working on Req-1.2
+    - wrote a sql script to create the "creditcard_capstone" database along with the three tables (CDW_SAPP_BRANCH, CDW_SAPP_CREDIT_CARD, CDW_SAPP_CUSTOMER)
+    - load/write the dataframe into their tables
+- Working on Req-2.1
