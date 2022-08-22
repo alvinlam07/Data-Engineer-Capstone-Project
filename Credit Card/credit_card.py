@@ -74,7 +74,7 @@ customer_df = customer_df \
               .withColumn("CUST_PHONE",
                           customer_df["CUST_PHONE"].cast(StringType())) \
               .withColumn("CUST_PHONE",
-                          format_string("%s-%s", substring("CUST_PHONE", 1, 3), substring("CUST_PHONE", 4, 7))) \
+                          format_string("(000)%s-%s", substring("CUST_PHONE", 1, 3), substring("CUST_PHONE", 4, 7))) \
               .withColumn("LAST_UPDATED",
                           customer_df["LAST_UPDATED"].cast(TimestampType()))
 customer_df = customer_df.select("SSN", \
@@ -90,9 +90,35 @@ customer_df = customer_df.select("SSN", \
                                 "CUST_PHONE", \
                                 "CUST_EMAIL", \
                                 "LAST_UPDATED")
-print(branch_df.printSchema())
-branch_df.show()
-print(credit_df.printSchema())
-credit_df.show()
-print(customer_df.printSchema())
-customer_df.show()
+# print(branch_df.printSchema())
+# branch_df.show()
+# print(credit_df.printSchema())
+# credit_df.show()
+# print(customer_df.printSchema())
+# customer_df.show()
+
+# ----- 1.2 -----
+
+branch_df.write.format("jdbc") \
+                .mode("append") \
+                .option("url", "jdbc:mysql://localhost:3306/creditcard_capstone") \
+                .option("dbtable", "CDW_SAPP_BRANCH") \
+                .option("user", "root") \
+                .option("password", "password") \
+                .save()
+
+credit_df.write.format("jdbc") \
+                .mode("append") \
+                .option("url", "jdbc:mysql://localhost:3306/creditcard_capstone") \
+                .option("dbtable", "CDW_SAPP_CREDIT_CARD") \
+                .option("user", "root") \
+                .option("password", "password") \
+                .save()
+
+customer_df.write.format("jdbc") \
+                .mode("append") \
+                .option("url", "jdbc:mysql://localhost:3306/creditcard_capstone") \
+                .option("dbtable", "CDW_SAPP_CUSTOMER") \
+                .option("user", "root") \
+                .option("password", "password") \
+                .save()
