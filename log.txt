@@ -22,3 +22,11 @@
         - learned that you can't 
         - used .withColumnRenamed() to rename columns
     - needed to make try/except for user input where the value is NOT string type within the table
+- Working on Req-2.2
+    - realized that I didn't really need try/except and instead check if the user input is valid
+    - realized that you can't update row in db using pyspark module
+
+8/24/2022
+- Working on Req-2.2
+    - update row in db using mysql.connector module
+- Working on Req-3.1
