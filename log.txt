@@ -13,4 +13,12 @@
 - Working on Req-1.2
     - wrote a sql script to create the "creditcard_capstone" database along with the three tables (CDW_SAPP_BRANCH, CDW_SAPP_CREDIT_CARD, CDW_SAPP_CUSTOMER)
     - load/write the dataframe into their tables
+    - had to go back and alter the sql script to add primary and foreign keys constraints
+
+8/23/2022
 - Working on Req-2.1
+    - running SQL queries programmatically using spark.sql()
+    - had trouble adding aliases for column(s) within SELECT
+        - learned that you can't 
+        - used .withColumnRenamed() to rename columns
+    - needed to make try/except for user input where the value is NOT string type within the table
