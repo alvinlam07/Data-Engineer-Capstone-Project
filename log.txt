@@ -29,4 +29,8 @@
 8/24/2022
 - Working on Req-2.2
     - update row in db using mysql.connector module
+
+8/25/2022
 - Working on Req-3.1
+    - needed to relearn how to do groupby, sum, set_index, etc. but some research quickly solved that issue
+    - learned that matplotlib can be difficult/tedious when wanting to graph a specific way (ex: coloring the tallest bar)
