@@ -1,6 +1,5 @@
 import requests
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col,isnan, when, count
 
 # ----- 4.1 -----
 response = requests.get("https://raw.githubusercontent.com/platformps/LoanDataset/main/loan_data.json")
