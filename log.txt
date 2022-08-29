@@ -31,6 +31,17 @@
     - update row in db using mysql.connector module
 
 8/25/2022
-- Working on Req-3.1
+- Working on Req-3.1-3.5
     - needed to relearn how to do groupby, sum, set_index, etc. but some research quickly solved that issue
     - learned that matplotlib can be difficult/tedious when wanting to graph a specific way (ex: coloring the tallest bar)
+- Working on Req-4.1-4.3
+    - similar work as 1.1
+    - had trouble reading the json file from GET response but found that I needed to use spark.sparkContext.parallelize() 
+      to convert the file in which the pyspark can read it
+
+8/27/2022
+- Working on Req-5.1-Challenge
+    - similar work as 3.1-3.5
+    - challenge question took a bit of time
+        - figuring out how to label each bar, add it to the legend, and color them
+        - made use of np library to randomly get color for each bar
