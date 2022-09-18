@@ -1,5 +1,13 @@
 import requests
+import os
 from pyspark.sql import SparkSession
+from dotenv import load_dotenv
+
+load_dotenv
+
+# globals
+user = os.getenv("DB_USER")
+password = os.getenv("DB_PASSWORD")
 
 # ----- 4.1 -----
 response = requests.get("https://raw.githubusercontent.com/platformps/LoanDataset/main/loan_data.json")
@@ -17,6 +25,6 @@ loan_df.write.format("jdbc") \
              .mode("append") \
              .option("url", "jdbc:mysql://localhost:3306/creditcard_capstone") \
              .option("dbtable", "CDW_SAPP_LOAN_APPLICATION") \
-             .option("user", "root") \
-             .option("password", "password") \
+             .option("user", user) \
+             .option("password", password) \
              .save()

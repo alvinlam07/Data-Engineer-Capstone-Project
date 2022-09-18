@@ -1,6 +1,14 @@
+import os
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import format_string, substring, lpad, concat, initcap, lower, concat_ws
 from pyspark.sql.types import IntegerType, TimestampType, StringType
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# globals
+user = os.getenv("DB_USER")
+password = os.getenv("DB_PASSWORD")
 
 # create spark session
 spark = SparkSession.builder.appName("CreditCard").getOrCreate()
@@ -103,22 +111,22 @@ branch_df.write.format("jdbc") \
                 .mode("append") \
                 .option("url", "jdbc:mysql://localhost:3306/creditcard_capstone") \
                 .option("dbtable", "CDW_SAPP_BRANCH") \
-                .option("user", "root") \
-                .option("password", "password") \
+                .option("user", user) \
+                .option("password", password) \
                 .save()
 
 credit_df.write.format("jdbc") \
                 .mode("append") \
                 .option("url", "jdbc:mysql://localhost:3306/creditcard_capstone") \
                 .option("dbtable", "CDW_SAPP_CREDIT_CARD") \
-                .option("user", "root") \
-                .option("password", "password") \
+                .option("user", user) \
+                .option("password", password) \
                 .save()
 
 customer_df.write.format("jdbc") \
                 .mode("append") \
                 .option("url", "jdbc:mysql://localhost:3306/creditcard_capstone") \
                 .option("dbtable", "CDW_SAPP_CUSTOMER") \
-                .option("user", "root") \
-                .option("password", "password") \
+                .option("user", user) \
+                .option("password", password) \
                 .save()

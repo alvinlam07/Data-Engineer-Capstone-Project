@@ -1,6 +1,14 @@
 import mysql.connector
 import re
+import os
 from pyspark.sql import SparkSession
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# globals
+user = os.getenv("DB_USER")
+password = os.getenv("DB_PASSWORD")
 
 # create spark session
 spark = SparkSession.builder.appName("CreditCard").getOrCreate()
@@ -8,8 +16,8 @@ spark = SparkSession.builder.appName("CreditCard").getOrCreate()
 # create database connection
 db = mysql.connector.connect(
     host="localhost",
-    user="root",
-    password="password",
+    user=user,
+    password=password,
     database="creditcard_capstone"
 )
 
@@ -17,20 +25,20 @@ db = mysql.connector.connect(
 branch_df = spark.read.format("jdbc") \
                         .option("url", "jdbc:mysql://localhost:3306/creditcard_capstone") \
                         .option("dbtable", "CDW_SAPP_BRANCH") \
-                        .option("user", "root") \
-                        .option("password", "password") \
+                        .option("user", user) \
+                        .option("password", password) \
                         .load()
 credit_df = spark.read.format("jdbc") \
                         .option("url", "jdbc:mysql://localhost:3306/creditcard_capstone") \
                         .option("dbtable", "CDW_SAPP_CREDIT_CARD") \
-                        .option("user", "root") \
-                        .option("password", "password") \
+                        .option("user", user) \
+                        .option("password", password) \
                         .load()
 customer_df = spark.read.format("jdbc") \
                         .option("url", "jdbc:mysql://localhost:3306/creditcard_capstone") \
                         .option("dbtable", "CDW_SAPP_CUSTOMER") \
-                        .option("user", "root") \
-                        .option("password", "password") \
+                        .option("user", user) \
+                        .option("password", password) \
                         .load()
 # branch_df.show()
 # credit_df.show()
